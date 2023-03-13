@@ -1,0 +1,66 @@
+#-------------------------------- Items --------------------------------#
+#                                                                       #
+#                                                                       #
+#                                                                       #
+#-----------------------------------------------------------------------#
+
+item id_card:
+	name: ID card
+	texture: idcard
+
+#------------------------------- Commands ------------------------------#
+#                                                                       #
+#                                                                       #
+#                                                                       #
+#-----------------------------------------------------------------------#
+
+function correctusage({player}):
+	send "correct usage: /idcard Firstname Lastname Gender Age" to {player}
+	send "example: /idcard Jean Lassalle M 67" to {player}
+
+command /idcard <string> <string> <string> <string>:
+	description: Gives you an ID card with all the information
+	if arg 1 is not set:
+		correctusage(player)
+	else:
+		if arg 2 is not set:
+			correctusage(player)
+		else:
+			if arg 3 is not set:
+				correctusage(player)
+			else:
+				if arg 4 is not set:
+					correctusage(player)
+				else:
+					set {nbt_idcard} to a new nbt compound
+					set tag "firstname" of {nbt_idcard} to arg 1
+					set tag "lastname" of {nbt_idcard} to arg 2
+					set tag "gender" of {nbt_idcard} to arg 3
+					set tag "age" of {nbt_idcard} to arg 4
+					give idcard:id_card with nbt {nbt_idcard} to player
+					
+
+#-------------------------------- Events -------------------------------#
+#                                                                       #
+#                                                                       #
+#                                                                       #
+#-----------------------------------------------------------------------#
+
+on click with idcard:id_card:
+	set {nbt} to item's nbt
+	set ${firstname} to tag "firstname" of {nbt}
+	set ${lastname} to tag "lastname" of {nbt}
+	set ${age} to tag "age" of {nbt}
+	set ${gender} to tag "gender" of {nbt}
+	if ${<player's name>.isOpenIdCard} is not set:
+		send "%{firstname}% %{lastname}% %{age}% %{gender}%" to player
+		display css gui "containerIdCard"
+		set ${<player's name>.isOpenIdCard} to true
+		wait 2 ticks
+		set ${<player's name>.isOpenIdCard} to false
+	if ${<player's name>.isOpenIdCard} is false:
+		send "%{firstname}% %{lastname}% %{age}% %{gender}%" to player
+		display css gui "containerIdCard"
+		set ${<player's name>.isOpenIdCard} to true
+		wait 2 ticks
+		set ${<player's name>.isOpenIdCard} to false

@@ -1,0 +1,54 @@
+#---------------------------------- Gui --------------------------------#
+#                                                                       #
+#                                                                       #
+#                                                                       #
+#-----------------------------------------------------------------------#
+
+on load:
+	set ${test} to "prout"
+	set ${testplayer} to "temp"
+
+function closeTheGui():
+	close current css gui
+
+define gui frame containerIdCard:
+	css_id: "screen"
+	css_sheets: ["idcard:css/style.css"]
+	gui_scaling: "adjust_full_screen"
+	enable_debug: true
+		# add css component panel with id "header":
+			# add css component label with id "title" and text "Test :":
+				# set text to "%${test}%"
+			# add css component panel with id "br-1"
+			# add css component panel with id "close-button"
+				# on component click:
+					# closeTheGui()
+			# add css component panel with id "list"
+				# add css component text_field:
+					# on component close:
+						# set ${test} to text of this_component
+	add css component panel with id "idcard":
+		add css component panel with id "header"
+		add css component panel with id "content":
+			add css component panel with id "information":
+				add css component label with id "firstname" and text "Raphael"
+				add css component label with id "lastname" and text "Thomas"
+				add css component label with id "gender" and text "M"
+				add css component label with id "nationality" and text "FRA"
+				add css component label with id "dob" and text "07062000"
+				add css component label with id "docno" and text "J9X42S95"
+				add css component label with id "expdt" and text "13032033"
+			add css component entity_render with id "player"
+				# set entity_to_render to ${testplayer}
+		
+
+
+on acsguis load:
+	register css sheet "idcard:css/style.css"
+
+command /debugidcard:
+	description: Test pour la script idCard
+	send "Ouverture du gui..." to player
+	set ${testplayer} to player
+	wait 2 ticks
+	display css gui "containerIdCard"
