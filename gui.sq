@@ -45,15 +45,22 @@ define gui frame containerIdCard:
 			add css component entity_render with id "player"
 				# set entity_to_render to ${testplayer}
 
+define gui frame etatcivil:
+	css_id: "screen"
+	css_sheets: ["idcard:css/style.css"]
+	gui_scaling: "adjust_full_screen"
+	enable_debug: true
+	add css component panel with id "etatcivil":
+		add css component label with id "test" and text "Test"
+
 on acsguis load:
 	register css sheet "idcard:css/style.css"
 
 command /debugidcard:
-	description: Test pour la script idCard
+	description: Test pour le script idCard
 	send "Ouverture du gui..." to player
-	set ${testplayer} to player
 	wait 2 ticks
-	display css gui "containerIdCard"
+	display css gui "etatcivil"
 
 on item click with (idcard:id_card):
 	set {nbt} to item's nbt
