@@ -10,6 +10,18 @@
     font-size: 50px;
 }
 
+@font-face {
+    font-family: "idcard:autography";
+    src: url("idcard:css/autography.ttf");
+    font-size: 50px;
+}
+
+@font-face {
+    font-family: "idcard:khalila";
+    src: url("idcard:css/khalila.ttf");
+    font-size: 50px;
+}
+
 #screen {
     width: 1920px;
     height: 1080px;
