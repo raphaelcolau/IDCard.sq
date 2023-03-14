@@ -1,7 +1,7 @@
 @font-face {
     font-family: "idcard:cambria-bold";
     src: url("idcard:css/cambriab.ttf");
-    font-size: 50px;
+    font-size: 150px;
 }
 
 @font-face {
@@ -44,7 +44,7 @@
 	left: 38%;
 	width: 62%;
 	height: 100%;
-	font-family: "idcard:cambriab";
+	font-family: "idcard:ocrb";
 	color: black;
 }
 
