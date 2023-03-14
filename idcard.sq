@@ -15,8 +15,8 @@ item id_card:
 #-----------------------------------------------------------------------#
 
 function correctusage({player}):
-	send "correct usage: /idcard Firstname Lastname Gender Age" to {player}
-	send "example: /idcard Jean Lassalle M 67" to {player}
+	send "correct usage: /idcard Firstname Lastname Gender Date of birth" to {player}
+	send "example: /idcard Jean Lassalle M 06072000" to {player}
 
 command /idcard <string> <string> <string> <string>:
 	description: Gives you an ID card with all the information
@@ -36,5 +36,5 @@ command /idcard <string> <string> <string> <string>:
 					set tag "firstname" of {nbt_idcard} to arg 1
 					set tag "lastname" of {nbt_idcard} to arg 2
 					set tag "gender" of {nbt_idcard} to arg 3
-					set tag "age" of {nbt_idcard} to arg 4
+					set tag "dob" of {nbt_idcard} to arg 4
 					give idcard:id_card with nbt {nbt_idcard} to player

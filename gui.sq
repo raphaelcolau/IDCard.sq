@@ -38,7 +38,8 @@ define gui frame containerIdCard:
 				add css component label with id "gender" and text "":
 					set text to "%${gender}%"
 				add css component label with id "nationality" and text "FRA"
-				add css component label with id "dob" and text "07062000"
+				add css component label with id "dob" and text "":
+					set text to "%${dob}%"
 				add css component label with id "docno" and text "J9X42S95"
 				add css component label with id "expdt" and text "13032033"
 			add css component entity_render with id "player"
@@ -58,15 +59,15 @@ on item click with (idcard:id_card):
 	set {nbt} to item's nbt
 	set ${firstname} to tag "firstname" of {nbt}
 	set ${lastname} to tag "lastname" of {nbt}
-	set ${age} to tag "age" of {nbt}
+	set ${dob} to tag "dob" of {nbt}
 	set ${gender} to tag "gender" of {nbt}
 	if ${<player's name>.isOpenIdCard} is not set:
-		# send "%{firstname}% %{lastname}% %{age}% %{gender}%" to player
+		# send "%{firstname}% %{lastname}% %{dob}% %{gender}%" to player
 		display css gui "containerIdCard"
 		wait 2 ticks
 		set ${<player's name>.isOpenIdCard} to false
 	if ${<player's name>.isOpenIdCard} is false:
-		# send "%{firstname}% %{lastname}% %{age}% %{gender}%" to player
+		# send "%{firstname}% %{lastname}% %{dob}% %{gender}%" to player
 		display css gui "containerIdCard"
 		set ${<player's name>.isOpenIdCard} to true
 		wait 2 ticks
