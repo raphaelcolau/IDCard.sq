@@ -38,29 +38,3 @@ command /idcard <string> <string> <string> <string>:
 					set tag "gender" of {nbt_idcard} to arg 3
 					set tag "age" of {nbt_idcard} to arg 4
 					give idcard:id_card with nbt {nbt_idcard} to player
-					
-
-#-------------------------------- Events -------------------------------#
-#                                                                       #
-#                                                                       #
-#                                                                       #
-#-----------------------------------------------------------------------#
-
-on click with idcard:id_card:
-	set {nbt} to item's nbt
-	set ${firstname} to tag "firstname" of {nbt}
-	set ${lastname} to tag "lastname" of {nbt}
-	set ${age} to tag "age" of {nbt}
-	set ${gender} to tag "gender" of {nbt}
-	if ${<player's name>.isOpenIdCard} is not set:
-		send "%{firstname}% %{lastname}% %{age}% %{gender}%" to player
-		display css gui "containerIdCard"
-		set ${<player's name>.isOpenIdCard} to true
-		wait 2 ticks
-		set ${<player's name>.isOpenIdCard} to false
-	if ${<player's name>.isOpenIdCard} is false:
-		send "%{firstname}% %{lastname}% %{age}% %{gender}%" to player
-		display css gui "containerIdCard"
-		set ${<player's name>.isOpenIdCard} to true
-		wait 2 ticks
-		set ${<player's name>.isOpenIdCard} to false
