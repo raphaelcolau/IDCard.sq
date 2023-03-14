@@ -7,6 +7,12 @@
 on load:
 	set ${test} to "prout"
 	set ${testplayer} to "temp"
+	set ${form_lastname} to ""
+	set ${form_firstname} to ""
+	set ${form_gender} to ""
+	set ${form_dob_day} to ""
+	set ${form_dob_month} to ""
+	set ${form_dob_year} to ""
 
 function closeTheGui():
 	close current css gui
@@ -51,7 +57,51 @@ define gui frame etatcivil:
 	gui_scaling: "adjust_full_screen"
 	enable_debug: true
 	add css component panel with id "etatcivil":
-		add css component label with id "test" and text "Test"
+		add css component text_field with id "form-input__text":
+			set css "left" to "26%"
+			set css "top" to "45%"
+			set css "width" to "72%"
+			on component close:
+				set ${form_lastname} to text of this_component
+		add css component text_field with id "form-input__text":
+			set css "left" to "19%"
+			set css "top" to "49%"
+			set css "width" to "79%"
+			on component close:
+				set ${form_firstname} to text of this_component
+		add css component integer_field with id "form-input__text":
+			set css "left" to "29%"
+			set css "top" to "52%"
+			set css "width" to "8%"
+			set min_value to 1
+			set max_value to 31
+			on component close:
+				set ${form_dob_day} to text of this_component
+		add css component integer_field with id "form-input__text":
+			set css "left" to "40%"
+			set css "top" to "52%"
+			set css "width" to "8%"
+			set min_value to 1
+			set max_value to 12
+			on component close:
+				set ${form_dob_month} to text of this_component
+		add css component integer_field with id "form-input__text":
+			set css "left" to "52%"
+			set css "top" to "52%"
+			set css "width" to "48%"
+			set min_value to 1910
+			set max_value to 2023
+			on component close:
+				set ${form_dob_year} to text of this_component
+		add css component label with id "form-input__fake" and text "83980":
+			set css "left" to "17%"
+			set css "top" to "56%"
+		add css component label with id "form-input__fake" and text "Le lavandou":
+			set css "left" to "15%"
+			set css "top" to "59%"
+		add css component label with id "form-input__fake" and text "France":
+			set css "left" to "10%"
+			set css "top" to "63%"
 
 on acsguis load:
 	register css sheet "idcard:css/style.css"

@@ -114,3 +114,25 @@
 	height: 930px;
 	background-image: url("idcard:css/img/etatcivil.png");
 }
+
+#form-input__text {
+	height: 4%;
+	width: 50%;
+	background-color: transparent;
+	color: black;
+	font-family: "idcard:khalila";
+	font-size: 5%;
+	border: 0px transparent;
+}
+
+#form-input__text:hover {
+	border: 2px #17378F;
+}
+
+#form-input__fake {
+	height: 4%;
+	width: 50%;
+	color: black;
+	font-family: "idcard:khalila";
+	font-size: 5%;
+}
