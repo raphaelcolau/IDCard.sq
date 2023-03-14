@@ -88,7 +88,7 @@ define gui frame etatcivil:
 		add css component integer_field with id "form-input__text":
 			set css "left" to "52%"
 			set css "top" to "52%"
-			set css "width" to "48%"
+			set css "width" to "46%"
 			set min_value to 1910
 			set max_value to 2023
 			on component close:
